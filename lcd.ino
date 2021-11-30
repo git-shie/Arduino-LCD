@@ -1,28 +1,28 @@
-#include <Wire.h>  // Arduino IDE ¤º«Ø
+#include <Wire.h>  // Arduino IDE å…§å»º
 #include <LiquidCrystal_I2C.h>
-LiquidCrystal_I2C lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);  // ³]©w LCD I2C ¦ì§}
+LiquidCrystal_I2C lcd(0x27, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);  // è¨­å®š LCD I2C ä½å€
 
 void setup() {
-  Serial.begin(115200);  // ¥Î©ó¤â°Ê¿é¤J¤å¦r
-  lcd.begin(16, 2);      // ªì©l¤Æ LCD¡A¤@¦æ 16 ªº¦r¤¸¡A¦@ 2 ¦æ¡A¹w³]¶}±Ò­I¥ú
+  Serial.begin(115200);  // ç”¨æ–¼æ‰‹å‹•è¼¸å…¥æ–‡å­—
+  lcd.begin(16, 2);      // åˆå§‹åŒ– LCDï¼Œä¸€è¡Œ 16 çš„å­—å…ƒï¼Œå…± 2 è¡Œï¼Œé è¨­é–‹å•ŸèƒŒå…‰
 
-  // °{Ã{¤T¦¸
+  // é–ƒçˆä¸‰æ¬¡
   for(int i = 0; i < 3; i++) {
-    lcd.backlight(); // ¶}±Ò­I¥ú
+    lcd.backlight(); // é–‹å•ŸèƒŒå…‰
     delay(250);
-    lcd.noBacklight(); // Ãö³¬­I¥ú
+    lcd.noBacklight(); // é—œé–‰èƒŒå…‰
     delay(250);
   }
   lcd.backlight();
-  // ¿é¥Xªì©l¤Æ¤å¦r
-  lcd.setCursor(0, 0); // ³]©w´å¼Ğ¦ì¸m¦b²Ä¤@¦æ¦æ­º
+  // è¼¸å‡ºåˆå§‹åŒ–æ–‡å­—
+  lcd.setCursor(0, 0); // è¨­å®šæ¸¸æ¨™ä½ç½®åœ¨ç¬¬ä¸€è¡Œè¡Œé¦–
   lcd.print("Hello, world!");
   delay(1000);
-  lcd.setCursor(0, 1); // ³]©w´å¼Ğ¦ì¸m¦b²Ä¤G¦æ¦æ­º
+  lcd.setCursor(0, 1); // è¨­å®šæ¸¸æ¨™ä½ç½®åœ¨ç¬¬äºŒè¡Œè¡Œé¦–
   lcd.print("GTWang.org");
   delay(8000);
 
-  // §iª¾¨Ï¥ÎªÌ¥i¥H¶}©l¤â°Ê¿é¤J°T®§
+  // å‘ŠçŸ¥ä½¿ç”¨è€…å¯ä»¥é–‹å§‹æ‰‹å‹•è¼¸å…¥è¨Šæ¯
   lcd.clear();
   lcd.setCursor(0, 0);
   lcd.print("Use Serial Mon");
@@ -30,15 +30,15 @@ void setup() {
   lcd.print("Type to display");
 }
 void loop() {
-  // ·í¨Ï¥ÎªÌ¤â°Ê¿é¤J°T®§
+  // ç•¶ä½¿ç”¨è€…æ‰‹å‹•è¼¸å…¥è¨Šæ¯
   if (Serial.available()) {
-    // µ¥«İ¤@¤p¬q®É¶¡¡A½T»{¸ê®Æ³£±µ¦¬¤U¨Ó¤F
+    // ç­‰å¾…ä¸€å°æ®µæ™‚é–“ï¼Œç¢ºèªè³‡æ–™éƒ½æ¥æ”¶ä¸‹ä¾†äº†
     delay(100);
-    // ²M°£ÂÂ°T®§
+    // æ¸…é™¤èˆŠè¨Šæ¯
     lcd.clear();
-    // Åª¨ú·s°T®§
+    // è®€å–æ–°è¨Šæ¯
     while (Serial.available() > 0) {
-      // ±N°T®§Åã¥Ü¦b LCD ¤W
+      // å°‡è¨Šæ¯é¡¯ç¤ºåœ¨ LCD ä¸Š
       lcd.write(Serial.read());
     }
   }
