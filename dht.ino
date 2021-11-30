@@ -1,9 +1,9 @@
 #include <dht.h>     
-#define dht_dpin A0 	           //Pin A0  
+#define dht_dpin A0 	           //DHT 11 類比輸入 Pin A0  
 dht DHT;   
 
 String a;
-String Sch_no = "321";
+String Sch_no = "555";
 
 void setup(){  
   Serial.begin(9600);   
